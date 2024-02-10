@@ -2,6 +2,19 @@
 export default {
     props:{
         links: Array, 
+        iconHeader: Array,
+    },
+
+    methods:{
+        activeGenders(index) {
+            this.links.forEach((link, i) => {
+                if (i == index) {
+                    link.active = true;
+                } else {
+                    link.active = false;
+                }
+            });
+        },
     }
 }
 </script>
@@ -11,8 +24,8 @@ export default {
 
         <div>
             <ul>
-                <li v-for="link in links">
-                    <a href="#">{{ link }}</a>
+                <li v-for="(link, index) in links" :class="link.active ? 'active' : ''" @click="activeGenders(index)">
+                    <a href="#">{{ link.geneder }}</a>
                 </li>
             </ul>
         </div>
@@ -20,10 +33,9 @@ export default {
             <img src='../assets/img/boolean-logo.png' alt="">
         </div>
         
-        <div class="icon">
-            <i class="fa-regular fa-user"></i>
-            <i class="fa-regular fa-heart"></i>
-            <i class="fa-solid fa-bag-shopping"></i>
+        <div class="icon" >
+            <i v-for="icon in iconHeader" 
+            :class="icon.class"></i>
         </div>
     
     </header>
@@ -55,18 +67,24 @@ ul{
 
     li{
         list-style-type: none;
+        padding: 5px;
         a{
             text-decoration: none;
-            color: white;
+            color: inherit;
         }
     }
 }
 
+.active{
+    color: black;
+}
+
 .icon{
     i{
-        padding: 0 3px;
+        padding: 5px;
         cursor: pointer;
     }
+
 }
 
 @media screen and (max-width: 550px){
