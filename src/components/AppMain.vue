@@ -1,77 +1,18 @@
 <script>
 export default {
-    data(){
-        return{
-            clothes:[
-                {
-                imageFront: '1.webp',
-                imageBack: '1b.webp',
-                sale: '50%',
-                brand: 'Levi\'s',
-                description: 'RELAXED FIT TEE UNISEX',
-                discountedPrice: '14,99 €',
-                price: '29,99 €',
-                },
-
-                {
-                imageFront: '2.webp',
-                imageBack: '2b.webp',
-                sale: '30%',
-                brand: 'Guess',
-                description: 'ROSES TEE',
-                discountedPrice: '20,99 €',
-                price: '29,99 €', 
-                },
-
-                {
-                imageFront: '3.webp',
-                imageBack: '3b.webp',
-                sale: '30%',
-                brand: 'Come Zucchero Filato',
-                description: 'VOGLIA DI COLORI PASTELLO',
-                discountedPrice: '129,99 €',
-                price: '184,99€', 
-                },
-
-                {
-                imageFront: '4.webp',
-                imageBack: '4b.webp',
-                sale: '50%',
-                brand: 'Levi\'s',
-                description: 'TEE UNISEX',
-                discountedPrice: '14,99 €',
-                price: '29,99 €', 
-                },
-
-                {
-                imageFront: '5.webp',
-                imageBack: '5b.webp',
-                sale: '',
-                brand: 'Maya Deluxe',
-                description: 'STRIPE BODICE',
-                discountedPrice: '',
-                price: '99.99 €', 
-                },
-
-                {
-                imageFront: '6.webp',
-                imageBack: '6b.webp',
-                sale: '',
-                brand: 'Esprit',
-                description: 'MAGLIONE - BLACK',
-                discountedPrice: '',
-                price: '29,99 €', 
-                },
-
-            ]
-        }
-
+    props:{
+        clothes: Array
     },
 
     methods:{
         buildImgPath(imageName){
             return new URL('../assets/img/' + imageName , import.meta.url).href;
-        }
+        },
+
+        favoriteClothe(index){
+            this.clothes[index].isInFavorites = !this.clothes[index].isInFavorites;
+        },
+
     }
 }
 </script>
@@ -79,16 +20,19 @@ export default {
 <template>
     <div class="container">
         <div class="card" v-for="(clothe, index) in clothes">
-            <img :src="buildImgPath(clothes[index].imageFront)" alt="">
-            <img class="img-hover" :src="buildImgPath(clothes[index].imageBack)" alt="">
-            <p>{{ clothe.sale }}</p>
-            <i class="fa-solid fa-heart like"></i>
+            <div class="img-clothe">
+                <img :src="buildImgPath(clothes[index].imageFront)" alt="">
+                <img class="img-hover" :src="buildImgPath(clothes[index].imageBack)" alt="">
+            </div>
+            <p v-if="clothe.sale">{{ clothe.sale }}</p>
+            <i class="fa-solid fa-heart" :class="clothe.isInFavorites ? 'like' : ''" @click="favoriteClothe(index)"></i>
             <div class="descripption">
                 <h6>{{ clothe.brand }}</h6>
                 <h4>{{ clothe.description }}</h4>
                 <h6 class="price">
-                    <span class="red">{{ clothe.discountedPrice }}</span> 
-                    <span class="line">{{ clothe.price}}</span>
+                    <span class="red" v-if="clothe.discountedPrice" >{{ clothe.discountedPrice }}</span> 
+                    <span class="line" v-if="clothe.discountedPrice">{{ clothe.price }}</span>
+                    <span v-else>{{ clothe.price }}</span>
                 </h6>
             </div>
         </div>
@@ -113,7 +57,6 @@ span{
     padding: 0 17%;
     display: flex;
     justify-content: center;
-    align-items: center;
     flex-wrap: wrap;
     gap: 20px;
     .card{
@@ -127,7 +70,7 @@ span{
             background-color: white;        
             padding: 10px;
         }
-        .like:hover{
+        .like{
             color: red;
         }
         p{
