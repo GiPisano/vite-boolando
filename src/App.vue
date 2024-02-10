@@ -6,6 +6,7 @@ import AppFooter from './components/AppFooter.vue';
 export default{
   data(){
     return{
+      links: ['Donna', 'Uomo', 'Bambini'],
       clothes:[
                 {
                 imageFront: '1.webp',
@@ -69,7 +70,8 @@ export default{
                 isInFavorites: false,
                 },
 
-            ]
+      ],
+      information:['Informazioni legali', 'Inormativa sulla privacy', 'Diritto di recesso'],
     }
   },
 
@@ -81,11 +83,9 @@ export default{
 
 <template>
 
-  <app-header></app-header>
-  <app-main 
-  :clothes="clothes"
-  ></app-main>
-  <app-footer></app-footer>
+  <app-header :links="links"></app-header>
+  <app-main :clothes="clothes"></app-main>
+  <app-footer :information="information"></app-footer>
 
 </template>
 

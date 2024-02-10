@@ -1,9 +1,7 @@
 <script>
 export default {
-    data(){
-        return{
-            links: ['Donna', 'Uomo', 'Bambini'],
-        }
+    props:{
+        links: Array, 
     }
 }
 </script>
@@ -32,22 +30,28 @@ export default {
     </template>
 
 <style lang="scss" scoped>
+@use '../styles/partials/mixins.scss' as *;
 
 header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include flex();
     padding: 10px 17%;
     background-color: rgb(255, 104, 1);
     color: white;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
 }
+
 .logo{
-    max-width: 100px;
+    min-width: 100px;
+    max-width: 100px
 };
 
 ul{
     display: flex;
-    gap: 20px;
+    gap: 10px;
 
     li{
         list-style-type: none;
@@ -64,5 +68,12 @@ ul{
         cursor: pointer;
     }
 }
+
+@media screen and (max-width: 550px){
+        header{
+           flex-direction: column;
+           gap: 10px;
+        }
+    }
 
 </style>

@@ -1,9 +1,8 @@
 <script>
 export default {
-    data(){
-        return{
-            title: 'footer',
-        }
+
+    props:{
+        information: Array,
     }
 }
 </script>
@@ -14,9 +13,7 @@ export default {
                 <h4>Boolando s.r.l</h4>
                 <nav>
                     <ul>
-                        <li><a href="#">Informazioni legali</a></li>
-                        <li><a href="#">Inormativa sulla privacy</a></li>
-                        <li><a href="#">Diritto di recesso</a></li>
+                        <li v-for="info in information"><a href="#">{{ info }}</a></li>
                     </ul>
                 </nav>
             </div>
@@ -32,10 +29,9 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+@use '../styles/partials/mixins.scss' as *;
 .container-footer{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include flex();
     padding: 5px 17%;
     background-color: rgb(26, 26, 26);
     color: white;
