@@ -1,5 +1,7 @@
 <script>
+
 export default {
+
     props:{
         clothes: Array
     },
@@ -13,15 +15,16 @@ export default {
             this.clothes[index].isInFavorites = !this.clothes[index].isInFavorites;
         },
 
-    }
+    },
+
 }
 </script>
 
 <template>
     <main class="container">
         <div class="card" v-for="(clothe, index) in clothes">
-            <img :src="buildImgPath(clothes[index].imageFront)" alt="">
-            <img class="img-hover" :src="buildImgPath(clothes[index].imageBack)" alt="">
+            <img :src="buildImgPath(clothe.imageFront)" alt="">
+            <img class="img-hover" :src="buildImgPath(clothe.imageBack)" alt="">
             <p v-if="clothe.sale">{{ clothe.sale }}</p>
             <i class="fa-solid fa-heart" :class="clothe.isInFavorites ? 'like' : ''" @click="favoriteClothe(index)"></i>
             <div class="descripption">

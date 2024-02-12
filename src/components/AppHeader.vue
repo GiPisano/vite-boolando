@@ -15,6 +15,15 @@ export default {
                 }
             });
         },
+        activeIconLink(index) {
+            this.links.forEach((iconHeader, i) => {
+                if (i == index) {
+                    iconHeader.active = true;
+                } else {
+                    iconHeader.active = false;
+                }
+            });
+        },
     }
 }
 </script>
@@ -34,8 +43,9 @@ export default {
         </div>
         
         <div class="icon" >
-            <i v-for="icon in iconHeader" 
-            :class="icon.class"></i>
+            <i v-for="(icon, index) in iconHeader"
+            @click="activeIconLink(index)" 
+            :class="icon.class, icon.active ? 'active' : ''"></i>
         </div>
     
     </header>
@@ -83,6 +93,10 @@ ul{
     i{
         padding: 5px;
         cursor: pointer;
+
+        &.activeIcon{
+            color: black;
+        }
     }
 
 }
