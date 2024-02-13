@@ -1,4 +1,6 @@
 <script>
+import { store } from '../store';
+
 
 export default {
     props:{
@@ -13,7 +15,6 @@ export default {
         favoriteClothe(index){
             this.clothes[index].isInFavorites = !this.clothes[index].isInFavorites;
         },
-
     },
 
 }
@@ -21,14 +22,14 @@ export default {
 
 <template>
     <main class="container">
-        <div class="card" v-for="(clothe, index) in clothes">
+        <div class="card" v-for="(clothe, index) in clothes" @click="$emit('open-card', index)">
             <div class="container-img">
                 <img :src="buildImgPath(clothe.imageFront)" alt="">
                 <img class="img-hover" :src="buildImgPath(clothe.imageBack)" alt="">
                 <p v-if="clothe.sale">{{ clothe.sale }}</p>
                 <i class="fa-solid fa-heart" :class="clothe.isInFavorites ? 'like' : ''" @click="favoriteClothe(index)"></i>
             </div>
-            <div class="descripption">
+            <div class="description">
                 <h6>{{ clothe.brand }}</h6>
                 <h4>{{ clothe.description }}</h4>
                 <h6 class="price">

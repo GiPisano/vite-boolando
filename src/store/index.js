@@ -5,6 +5,14 @@ export const store = reactive({
 
     modal: {
         show: true,
+        imageFront: '',
+        imageBack: '',
+        brand: '',
+        description: '',
+        sale: '',
+        price: '',
+        discountedPrice: '',
+        
     }
 });
 

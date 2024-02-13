@@ -50,6 +50,20 @@ export default{
     }
   },
 
+  methods:{
+    openCard(index){
+      store.modal.show = true;
+      console.log('hai cliccato la card' + index);
+      const selectedProduct = this.clothes[index];
+      store.modal.imageFront = selectedProduct.imageFront;
+      store.modal.brand = selectedProduct.brand;
+      store.modal.description = selectedProduct.description;
+      store.modal.sale = selectedProduct.sale;
+      store.modal.price = selectedProduct.price;
+      store.modal.discountedPrice = selectedProduct.discountedPrice;
+    }
+  },
+
   components:{ AppHeader, AppMain, AppFooter, AppModal },
 
   created(){
@@ -64,7 +78,7 @@ export default{
 
   <app-header :links="links" :iconHeader="iconHeader"></app-header>
   <app-modal v-if="store.modal.show"></app-modal>
-  <app-main :clothes="clothes"></app-main>
+  <app-main :clothes="clothes" @open-card="openCard"></app-main>
   <app-footer :information="information"></app-footer>
 
 </template>
