@@ -31,15 +31,13 @@ export default {
             </div>
             <div class="description">
                 <h6>{{ clothe.brand }}</h6>
-                <div class="name-clothe">
                     <h4>{{ clothe.description }}</h4>
-                    <button @click="$emit('open-card', index)">Zoom</button>
-                </div>
                 <h6 class="price">
                     <span class="red" v-if="clothe.discountedPrice" >{{ clothe.discountedPrice }}</span> 
                     <span class="line" v-if="clothe.discountedPrice">{{ clothe.price }}</span>
                     <span v-else>{{ clothe.price }}</span>
                 </h6>
+                <button @click="$emit('open-card', index)">Zoom</button>
             </div>
         </div>
     </main> 
@@ -108,11 +106,6 @@ export default {
 
         .card:hover .img-hover{
         display: block;
-        }
-
-        .name-clothe{
-            display: flex;
-            justify-content: space-between;
         }
 
         @media screen and (max-width: 800px){

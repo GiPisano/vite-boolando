@@ -42,6 +42,7 @@ export default {
                 <h4 v-else><span>Prezzo :</span> {{ store.modal.price }}</h4>
             </div>
         </div>
+    
     </div>
 </div>
 
@@ -67,7 +68,6 @@ export default {
 }
 
 .modal{
-    width: 80%;
     max-width: 940px;
     padding: 1rem;
     background-color: white;
@@ -92,7 +92,7 @@ span{
 }
 
 .container-img{
-    max-width: 30%;
+    max-width: 50%;
     height: auto;
     position: relative;
 }
