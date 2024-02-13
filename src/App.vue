@@ -4,6 +4,7 @@ import { store } from './store';
 import AppHeader from './components/AppHeader.vue';
 import AppMain from './components/AppMain.vue';
 import AppFooter from './components/AppFooter.vue';
+import AppModal from './components/AppModal.vue';
 
 
 import axios from 'axios';
@@ -49,9 +50,7 @@ export default{
     }
   },
 
-  components:{
-    AppHeader, AppMain, AppFooter
-  },
+  components:{ AppHeader, AppMain, AppFooter, AppModal },
 
   created(){
         axios.get(`${store.apiUri}`).then((res) => {
@@ -64,6 +63,7 @@ export default{
 <template>
 
   <app-header :links="links" :iconHeader="iconHeader"></app-header>
+  <app-modal v-if="store.modal.show"></app-modal>
   <app-main :clothes="clothes"></app-main>
   <app-footer :information="information"></app-footer>
 

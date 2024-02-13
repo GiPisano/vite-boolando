@@ -1,9 +1,8 @@
 <script>
 
 export default {
-
     props:{
-        clothes: Array
+        clothes: Array,
     },
 
     methods:{
@@ -23,10 +22,12 @@ export default {
 <template>
     <main class="container">
         <div class="card" v-for="(clothe, index) in clothes">
-            <img :src="buildImgPath(clothe.imageFront)" alt="">
-            <img class="img-hover" :src="buildImgPath(clothe.imageBack)" alt="">
-            <p v-if="clothe.sale">{{ clothe.sale }}</p>
-            <i class="fa-solid fa-heart" :class="clothe.isInFavorites ? 'like' : ''" @click="favoriteClothe(index)"></i>
+            <div class="container-img">
+                <img :src="buildImgPath(clothe.imageFront)" alt="">
+                <img class="img-hover" :src="buildImgPath(clothe.imageBack)" alt="">
+                <p v-if="clothe.sale">{{ clothe.sale }}</p>
+                <i class="fa-solid fa-heart" :class="clothe.isInFavorites ? 'like' : ''" @click="favoriteClothe(index)"></i>
+            </div>
             <div class="descripption">
                 <h6>{{ clothe.brand }}</h6>
                 <h4>{{ clothe.description }}</h4>
@@ -62,27 +63,35 @@ export default {
         margin-top: 50px;
         .card{
             width: calc(100% / 3 - 20px);
+            display: flex;
+            flex-direction: column;
             margin: 10px 0;
-            position: relative;
-            i{
-                position: absolute;
-                top: 5px;
-                right: 0;
-                background-color: white;        
-                padding: 10px;
+            .container-img{
+            
+                position: relative;
             }
-            .like{
-                color: red;
-            }
-            p{
-                font-size: 12px;
-                position: absolute;
-                bottom: 70px;
-                left: 0;
-                background-color: red;
-                padding: 5px 10px;
-                color: white;       
-            }
+            
+                i{
+                    position: absolute;
+                    top: 5px;
+                    right: 0;
+                    background-color: white;        
+                    padding: 10px;
+                }
+                .like{
+                    color: red;
+                }
+                
+                p{
+                    font-size: 12px;
+                    position: absolute;
+                    bottom: 10px;
+                    left: 0;
+                    background-color: red;
+                    padding: 5px 10px;
+                    color: white;       
+                }
+           
         }
         .img-hover{
         position: absolute;

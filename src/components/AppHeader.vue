@@ -15,6 +15,7 @@ export default {
                 }
             });
         },
+        
         activeIconLink(index) {
             this.links.forEach((iconHeader, i) => {
                 if (i == index) {
@@ -59,11 +60,11 @@ header{
     padding: 10px 17%;
     background-color: rgb(255, 104, 1);
     color: white;
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: 1;
+    // position: fixed;
+    // top: 0;
+    // right: 0;
+    // left: 0;
+    // z-index: 1;
 }
 
 .logo{
