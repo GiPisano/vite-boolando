@@ -4,7 +4,7 @@ export const store = reactive({
     apiUri:'http://localhost:3000/clothes',
 
     modal: {
-        show: true,
+        show: false,
         imageFront: '',
         imageBack: '',
         brand: '',

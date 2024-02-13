@@ -22,7 +22,7 @@ export default {
 
 <template>
     <main class="container">
-        <div class="card" v-for="(clothe, index) in clothes" @click="$emit('open-card', index)">
+        <div class="card" v-for="(clothe, index) in clothes" >
             <div class="container-img">
                 <img :src="buildImgPath(clothe.imageFront)" alt="">
                 <img class="img-hover" :src="buildImgPath(clothe.imageBack)" alt="">
@@ -31,7 +31,10 @@ export default {
             </div>
             <div class="description">
                 <h6>{{ clothe.brand }}</h6>
-                <h4>{{ clothe.description }}</h4>
+                <div class="name-clothe">
+                    <h4>{{ clothe.description }}</h4>
+                    <button @click="$emit('open-card', index)">Zoom</button>
+                </div>
                 <h6 class="price">
                     <span class="red" v-if="clothe.discountedPrice" >{{ clothe.discountedPrice }}</span> 
                     <span class="line" v-if="clothe.discountedPrice">{{ clothe.price }}</span>
@@ -105,6 +108,11 @@ export default {
 
         .card:hover .img-hover{
         display: block;
+        }
+
+        .name-clothe{
+            display: flex;
+            justify-content: space-between;
         }
 
         @media screen and (max-width: 800px){

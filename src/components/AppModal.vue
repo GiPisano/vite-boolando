@@ -30,6 +30,7 @@ export default {
         <div class="container">
             <div class="container-img">
                 <img :src="buildImgPath(store.modal.imageFront)" alt="">
+                <img :src="buildImgPath(store.modal.imageBack)" class="img-hover" alt="">
             </div>
 
             <div class="description">
@@ -93,5 +94,20 @@ span{
 .container-img{
     max-width: 30%;
     height: auto;
+    position: relative;
 }
+
+.img-hover{
+    position: absolute;
+    right: 0;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    display: none;
+}
+
+.container-img:hover .img-hover{
+    display: block;
+}
+
 </style>

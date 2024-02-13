@@ -56,6 +56,7 @@ export default{
       console.log('hai cliccato la card' + index);
       const selectedProduct = this.clothes[index];
       store.modal.imageFront = selectedProduct.imageFront;
+      store.modal.imageBack = selectedProduct.imageBack;
       store.modal.brand = selectedProduct.brand;
       store.modal.description = selectedProduct.description;
       store.modal.sale = selectedProduct.sale;
