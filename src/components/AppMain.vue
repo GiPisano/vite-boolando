@@ -8,7 +8,7 @@ export default {
 
   methods: {
     buildImgPath(imageName) {
-      return "/images/" + imageName;
+      return "/img/" + imageName;
     },
 
     favoriteClothe(index) {
