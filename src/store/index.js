@@ -4,7 +4,7 @@ export const store = reactive({
   apiUri:
     window.location.hostname === "localhost"
       ? "http://localhost:3000/clothes"
-      : "https://vite-boolando.glitch.me/clothes",
+      : "https://6748ecb45801f51535928e25.mockapi.io/api/clothes",
 
   modal: {
     show: false,
