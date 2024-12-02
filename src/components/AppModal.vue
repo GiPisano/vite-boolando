@@ -14,7 +14,7 @@ export default {
     },
 
     buildImgPath(imageName) {
-      return "/img/" + imageName;
+      return `img/${imageName}`;
     },
   },
 };

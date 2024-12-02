@@ -43,7 +43,7 @@ export default {
       </ul>
     </div>
     <div class="logo">
-      <img src="../assets/img/boolean-logo.png" alt="" />
+      <img src="/img/boolean-logo.png" alt="" />
     </div>
 
     <div class="icon">
